@@ -1,14 +1,33 @@
 import React, { useState } from 'react';
 import styles from '../../data/styles.json';
 
+import axios from 'axios';
+
 function BlogForm() {
   const [title, setTitle] = useState('');
+  const [slug, setSlug] = useState('');
+  const [content, setContent] = useState('');
+  const [author, setAuthor] = useState('');
 
-  console.log(title);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    (async () => {
+      const response = await axios('http://localhost:5000/api/blog', {
+        method: 'POST',
+        data: { title, slug, content, author },
+      });
+
+      setTitle('');
+      setSlug('');
+      setContent('');
+      setAuthor('');
+    })();
+  };
 
   return (
     <div className='' style={{ marginTop: '20px', marginBottom: '50px' }}>
-      <form className='flex flex-col gap-4'>
+      <form className='flex flex-col gap-4' onSubmit={handleFormSubmit}>
         <label>Enter Blog Title:</label>
         <input
           type='text'
@@ -32,6 +51,7 @@ function BlogForm() {
             width: '750px',
           }}
           className='rounded-[8px]'
+          onChange={(e) => setSlug(e.target.value)}
         />
 
         <label>Enter Author Name:</label>
@@ -44,6 +64,7 @@ function BlogForm() {
             width: '750px',
           }}
           className='rounded-[8px]'
+          onChange={(e) => setAuthor(e.target.value)}
         />
         <label>Enter your Content:</label>
         <textarea
@@ -57,6 +78,7 @@ function BlogForm() {
             resize: 'none',
           }}
           className='rounded-[8px]'
+          onChange={(e) => setContent(e.target.value)}
         />
 
         <input

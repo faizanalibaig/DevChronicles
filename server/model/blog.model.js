@@ -5,7 +5,7 @@ const blog = mongoose.Schema({
   content: String,
   author: String,
   slug: String,
-  createdAt: { type: Date, default: Date.now },
+  publish_date: { type: Date, default: Date.now },
   updatedAt: Date,
 });
 
