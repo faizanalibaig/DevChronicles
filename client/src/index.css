@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-display: 'Oswald', 'sans-serif';
+}
+
 * {
   margin: 0;
   padding: 0;
