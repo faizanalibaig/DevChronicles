@@ -14,9 +14,17 @@ exports.create = async function (req, res) {
 
 exports.find = async function (req, res) {
   try {
-    const id = req.params.id;
-    const blog = await Blog.findById(id);
-    res.status(200).send({
+    const slug = req.params.slug;
+    const blog = await Blog.findOne({ slug: slug });
+
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog post not found' });
+    }
+
+    const modifiedContent = blog.content.split('+').join('/n');
+    blog.content = modifiedContent;
+
+    res.status(200).json({
       message: 'Blog post found successfully',
       data: blog,
     });

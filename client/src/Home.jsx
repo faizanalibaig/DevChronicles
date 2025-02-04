@@ -6,8 +6,10 @@ import Blog from './components/Blog/Blog';
 function Home() {
   return (
     <div
-      className='w-full h-[85%] text-white font-serif flex flex-col justify-center items-center'
-      style={{ backgroundColor: styles['background-color'] }}
+      className='w-full  min-h-[85%] h-auto text-white font-serif flex flex-col justify-center items-center'
+      style={{
+        backgroundColor: styles['background-color'],
+      }}
     >
       <Welcome />
       <Search />

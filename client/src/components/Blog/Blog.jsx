@@ -26,8 +26,6 @@ function Blog() {
     fetchBlogs();
   }, []);
 
-  console.log('blog -------------------------', blogs.data);
-
   return (
     <>
       {blogs?.data?.map((blog, index) => {
@@ -38,6 +36,7 @@ function Blog() {
               backgroundColor: styles['blog-post-bg'],
               padding: '35px 40px',
               marginTop: '10px',
+              marginBottom: '30px',
             }}
             className='w-[700px] h-[250px] bg-white rounded-[12px] flex flex-col justify-between font-sans'
           >

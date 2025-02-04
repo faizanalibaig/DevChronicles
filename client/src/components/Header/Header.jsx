@@ -5,7 +5,6 @@ import { FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 function Header() {
-  console.log(header);
   return (
     <header
       className='h-[15%] text-white p-20 font-serif flex justify-between'
